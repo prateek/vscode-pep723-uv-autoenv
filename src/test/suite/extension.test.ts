@@ -63,7 +63,7 @@ describe('Integration: PEP723 uv env sync', () => {
 
     // Verify import works
     await new Promise<void>((resolve, reject) => {
-      const child = spawn(envPython, ['-c', 'import requests'], { shell: isWindows });
+      const child = spawn(envPython, ['-c', 'import requests'], { shell: false });
       let stderr = '';
       child.stderr.on('data', (d) => (stderr += d.toString()));
       child.on('close', (code) => {

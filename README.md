@@ -20,6 +20,25 @@ Works on macOS, Linux, and Windows.
   - Windows: `powershell -c "iwr https://astral.sh/uv/install.ps1 -useb | iex"`
 - VS Code Python extension (`ms-python.python`) recommended
 
+## Installation
+
+- From VSIX (recommended)
+  - Download the latest `.vsix` from the repo Releases.
+  - In VS Code: Extensions panel → “…” → “Install from VSIX…” and select the file.
+  - Or via CLI:
+    ```bash
+    code --install-extension ./vscode-pep723-uv-autoenv-*.vsix
+    ```
+- From source
+  - Clone and build:
+    ```bash
+    git clone git@github.com:prateek/vscode-pep723-uv-autoenv.git
+    cd vscode-pep723-uv-autoenv
+    npm install
+    npm run build
+    ```
+  - Press F5 in VS Code to launch an Extension Development Host.
+
 ## Usage
 
 1. Open a workspace containing a Python file with a valid PEP-723 header, e.g.:
@@ -58,6 +77,24 @@ On success you’ll see: `PEP723 env ready: .uvenv-<hash>`.
 - Build: `npm run build`
 - Watch: `npm run watch`
 - Test: `npm test` (integration tests use `@vscode/test-electron`)
+
+## Publishing (maintainers)
+
+- Bump version in `package.json`, commit, and tag a release:
+  ```bash
+  git tag v0.1.0
+  git push origin v0.1.0
+  ```
+  CI will build on Linux/macOS/Windows and upload a `.vsix` artifact to the workflow run for that tag.
+- Manual packaging (without CI):
+  ```bash
+  npx @vscode/vsce package
+  ```
+  This produces `vscode-pep723-uv-autoenv-<version>.vsix` in the project root.
+- Marketplace publishing (optional)
+  - Requires a publisher with permissions (e.g., `prateek`).
+  - One-time login: `npx @vscode/vsce login prateek`
+  - Publish: `npx @vscode/vsce publish`
 
 ## Repository structure
 

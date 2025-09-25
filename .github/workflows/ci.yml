@@ -44,7 +44,12 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Test
+      - name: Test (Linux under xvfb)
+        if: runner.os == 'Linux'
+        run: xvfb-run -a npm test
+
+      - name: Test (macOS/Windows)
+        if: runner.os != 'Linux'
         run: npm test
 
       - name: Package VSIX (on tag)
