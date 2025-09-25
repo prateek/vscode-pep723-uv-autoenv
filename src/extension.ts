@@ -33,7 +33,7 @@ function runCommand(
   return new Promise((resolve, reject) => {
     const child = spawn(command, args, {
       cwd: options.cwd,
-      shell: isWindows, // helps on Windows to resolve command
+      shell: false,
       env: process.env,
     });
     let stdout = '';
