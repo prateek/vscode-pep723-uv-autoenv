@@ -1,0 +1,49 @@
+{
+  "name": "vscode-pep723-uv-autoenv",
+  "displayName": "PEP723 UV Autoenv",
+  "publisher": "prateek",
+  "description": "Auto-select and prepare a uv virtualenv based on PEP-723 inline headers in Python files.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:python",
+    "onCommand:pep723uv.sync"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "pep723uv.sync",
+        "title": "PEP723: Sync Env"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "tsc -p .",
+    "watch": "tsc -w",
+    "lint": "eslint . --ext .ts || true",
+    "test": "node ./out/test/runTest.js",
+    "package": "npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^20.12.7",
+    "@types/vscode": "^1.85.0",
+    "@vscode/test-electron": "^2.4.4",
+    "eslint": "^8.57.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.4.0",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "toml": "^3.0.0"
+  }
+}

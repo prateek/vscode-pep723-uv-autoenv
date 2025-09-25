@@ -1,0 +1,10 @@
+{
+  "name": "vscode-pep723-uv-autoenv",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
+  "postCreateCommand": "bash -lc \"curl -LsSf https://astral.sh/uv/install.sh | sh && echo 'export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$PATH' >> ~/.bashrc\"",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"]
+    }
+  }
+}
